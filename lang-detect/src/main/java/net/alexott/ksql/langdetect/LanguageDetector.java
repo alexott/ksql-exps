@@ -11,25 +11,9 @@ public class LanguageDetector {
     private final static String UNKNOWN_LANGUAGE="unk";
     private final static String LABEL_PREFIX="__label__";
 
-    static JFastText langModel = null;
-
-    static {
-        try {
-            InputStream is = LanguageDetector.class.getResourceAsStream("/lid.176.ftz");
-            if (is != null) {
-                langModel = new JFastText(is);
-            } else {
-                System.err.println("Can't load resource from classpath...");
-            }
-        } catch (Exception ex) {
-            // TODO: use Logger
-            System.err.println("Error loading language model: " + ex.getMessage());
-            ex.printStackTrace(System.err);
-        }
-    }
-
     @Udf(description = "perform language detection")
     public String langdetect(final String text) {
+        JFastText langModel = LanguageModelHolder.getLangModel();
         if (langModel == null) {
             return null;
         }
