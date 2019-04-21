@@ -45,6 +45,11 @@
   </repositories>
   
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -74,24 +79,24 @@
         </executions>
       </plugin>
       <plugin>
-	<groupId>com.googlecode.maven-download-plugin</groupId>
-	<artifactId>download-maven-plugin</artifactId>
-	<version>1.4.1</version>
-	<executions>
-	  <execution>
-	    <id>get-compressed-model</id>
-	    <phase>compile</phase>
-	    <goals>
-	      <goal>wget</goal>
-	    </goals>
-	    <configuration>
+        <groupId>com.googlecode.maven-download-plugin</groupId>
+        <artifactId>download-maven-plugin</artifactId>
+        <version>1.4.1</version>
+        <executions>
+          <execution>
+            <id>get-compressed-model</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>wget</goal>
+            </goals>
+            <configuration>
               <!-- full model: https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin -->
-	      <url>https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz</url>
-	      <outputDirectory>src/main/resources</outputDirectory>
-	      <sha1>86d1b630ba55a5040231eda9fe24a7befdc411f2</sha1>
-	    </configuration>
-	  </execution>
-	</executions>
+              <url>https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz</url>
+              <outputDirectory>src/main/resources/</outputDirectory>
+              <sha1>86d1b630ba55a5040231eda9fe24a7befdc411f2</sha1>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
