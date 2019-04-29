@@ -85,15 +85,26 @@
         <executions>
           <execution>
             <id>get-compressed-model</id>
-            <phase>validate</phase>
+            <phase>generate-resources</phase>
             <goals>
               <goal>wget</goal>
             </goals>
             <configuration>
-              <!-- full model: https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin -->
               <url>https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz</url>
               <outputDirectory>src/main/resources/</outputDirectory>
               <sha1>86d1b630ba55a5040231eda9fe24a7befdc411f2</sha1>
+            </configuration>
+          </execution>
+          <execution>
+            <id>get-full-model</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>wget</goal>
+            </goals>
+            <configuration>
+              <url>https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin</url>
+              <outputDirectory>src/main/resources/</outputDirectory>
+              <sha1>e613bda316ecb4f5e1924140eedf81b81c087d9a</sha1>
             </configuration>
           </execution>
         </executions>

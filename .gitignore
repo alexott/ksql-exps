@@ -10,6 +10,7 @@ buildNumber.properties
 .idea/
 *~
 /lang-detect/src/main/resources/lid.176.ftz
+/lang-detect/src/main/resources/lid.176.bin
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar

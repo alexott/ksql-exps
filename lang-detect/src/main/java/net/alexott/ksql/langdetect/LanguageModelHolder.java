@@ -12,10 +12,15 @@ class LanguageModelHolder {
     private static Logger LOGGER = LoggerFactory.getLogger(LanguageModelHolder.class);
     static JFastText langModel = null;
 
+    private static final String COMPRESSED_MODEL = "/lid.176.ftz";
+    private static final String FULL_MODEL = "/lid.176.bin";
+    private static final boolean USE_FULL_MODEL = true;
+
     static {
         try {
             // TODO: use system property to load compressed or full language model...
-            InputStream is = LanguageModelHolder.class.getResourceAsStream("/lid.176.ftz");
+            String model = (USE_FULL_MODEL ? FULL_MODEL : COMPRESSED_MODEL);
+            InputStream is = LanguageModelHolder.class.getResourceAsStream(model);
             if (is != null) {
                 langModel = new JFastText(is);
             } else {

@@ -17,7 +17,7 @@ public class LanguageDetector {
     @Udf(description = "perform language detection")
     public String langdetect(final String text) {
         JFastText langModel = LanguageModelHolder.getLangModel();
-        if (langModel == null) {
+        if (langModel == null || text == null) {
             return null;
         }
         try {
